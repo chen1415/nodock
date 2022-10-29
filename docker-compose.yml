@@ -7,7 +7,7 @@ services:
             args:
                 - NODE_VERSION=${NODE_VERSION}
                 - NODE_ENV=production
-                - PROJECT_PATH=demo
+                - PROJECT_PATH=nestjs
                 - YARN=${WORKSPACE_INSTALL_YARN}
         volumes:
             - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
