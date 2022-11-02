@@ -3,15 +3,15 @@ version: '3.3'
 services:
     nestjs:
         build:
-            context: ./node
+            context: ./nestjs
             args:
-                - NODE_VERSION=${NODE_VERSION}
-                - NODE_ENV=production
-                - PROJECT_PATH=nestjs
+                - NODE_VERSION=${NESTJS_NODE_VERSION}
+                - NODE_ENV=${NESTJS_NODE_ENV}
+                - PROJECT_PATH=${NESTJS_PROJECT_PATH}
                 - YARN=${WORKSPACE_INSTALL_YARN}
         volumes:
             - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
-        entrypoint: run-nodock "node index.js"
+        # entrypoint: run-nodock "yarn start"
         tty: true
     mysql:
         build:

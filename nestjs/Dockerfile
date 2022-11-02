@@ -7,7 +7,7 @@ RUN apt-get update &&\
 ARG NODE_ENV=production
 ARG NODE_VERSION=latest
 ARG PROJECT_PATH=/opt/app/
-ARG YARN=false
+ARG YARN=true
 
 ENV YARN=$YARN
 ENV PROJECT_PATH=$PROJECT_PATH
@@ -30,7 +30,25 @@ RUN if [ ${YARN} = true ]; then \
 ;fi
 
 COPY scripts/run-nodock.sh /usr/bin/run-nodock
+COPY package*.json ./
 
 RUN chmod 700 /usr/bin/run-nodock
 
-WORKDIR /opt/app
+WORKDIR /opt/app/nestjs
+
+# CMD ["node dist/main"]
+#install nestjs/cli on global
+# RUN if [ ${YARN} = true ]; then \
+#     RUN yarn global add @nestjs/cli \
+# ;fi
+
+
+# RUN if [ ${YARN} = false ]; then \
+#     RUN npm install forever -g @nestjs/cli \
+# ;fi
+
+# if [ ${YARN} = false ]; then \
+#     RUN npm start:dev \
+# ;fi
+# ENTRYPOINT ["run-nodock"]
+ENTRYPOINT ["node", "dist/main"]
