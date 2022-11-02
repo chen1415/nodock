@@ -34,21 +34,6 @@ COPY package*.json ./
 
 RUN chmod 700 /usr/bin/run-nodock
 
-WORKDIR /opt/app/nestjs
+WORKDIR /opt/app/$PROJECT_PATH
 
-# CMD ["node dist/main"]
-#install nestjs/cli on global
-# RUN if [ ${YARN} = true ]; then \
-#     RUN yarn global add @nestjs/cli \
-# ;fi
-
-
-# RUN if [ ${YARN} = false ]; then \
-#     RUN npm install forever -g @nestjs/cli \
-# ;fi
-
-# if [ ${YARN} = false ]; then \
-#     RUN npm start:dev \
-# ;fi
-# ENTRYPOINT ["run-nodock"]
-ENTRYPOINT ["node", "dist/main"]
+ENTRYPOINT ["yarn", "start:${NODE_ENV}"]
