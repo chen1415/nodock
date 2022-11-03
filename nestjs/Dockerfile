@@ -36,4 +36,4 @@ RUN chmod 700 /usr/bin/run-nodock
 
 WORKDIR /opt/app/$PROJECT_PATH
 
-ENTRYPOINT ["yarn", "start:${NODE_ENV}"]
+ENTRYPOINT ["node", "dist/main"]
