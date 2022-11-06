@@ -3,10 +3,8 @@
 server {
     listen 80 default_server;
 
-    server_name nestjs.test;
-
     location / {
-        proxy_pass http://nestjs:${WEB_REVERSE_PROXY_PORT};
+        proxy_pass http://node:${WEB_REVERSE_PROXY_PORT};
     }
 
     location /.well-known/acme-challenge/ {

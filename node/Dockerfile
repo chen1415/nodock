@@ -36,4 +36,4 @@ RUN chmod 700 /usr/bin/run-nodock
 
 WORKDIR /opt/app/$PROJECT_PATH
 
-ENTRYPOINT ["node", "dist/main"]
+# ENTRYPOINT ["node", "dist/main"]
