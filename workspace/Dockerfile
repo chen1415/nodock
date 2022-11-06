@@ -20,13 +20,26 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ##
 
 ARG NODE_VERSION=latest
+ENV NODE_VERSION=$NODE_VERSION
 
 # Install the specified NODE_VERSION or grab latest
 RUN n "$NODE_VERSION"
 
-# Install YARN
-RUN npm i -g yarn
-RUN yarn global add @nestjs/cli
+ARG YARN=true
+ARG NEST=true
+ARG NEST_VERSION=9
+
+ENV YARN=$YARN
+ENV NEST=$NEST
+ENV NEST_VERSION=$NEST_VERSION
+
+# Install YARN && NEST
+RUN if [ ${YARN} = true ]; then \
+    npm install -g yarn \
+;fi
+RUN if [ ${NEST} = true ]; then \
+    yarn global add @nestjs/cli@$NEST_VERSION \
+;fi
 
 ##
 ## Cron

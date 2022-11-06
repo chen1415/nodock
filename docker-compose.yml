@@ -103,6 +103,9 @@ services:
             args:
                 - NODE_VERSION=${NODE_VERSION}
                 - TZ=${WORKSPACE_TIMEZONE}
+                - YARN=${WORKSPACE_INSTALL_YARN}
+                - NEST=${WORKSPACE_INSTALL_NEST}
+                - NEST_VERSION=${WORKSPACE_NEST_VERSION}
         # links:
         #     - nginx
         volumes:
