@@ -9,11 +9,11 @@ for template in /etc/nginx/templates/*.template; do
 done
 
 if [[ "$NO_DEFAULT" = true ]]; then
-    rm /etc/nginx/sites-available/node.template.conf
-    rm /etc/nginx/sites-available/node-https.template.conf
+    rm /etc/nginx/sites-available/nestjs.template.conf
+    rm /etc/nginx/sites-available/nestjs-https.template.conf
 else
     if [[ "$WEB_SSL" = false ]]; then
-        rm /etc/nginx/sites-available/node-https.template.conf
+        rm /etc/nginx/sites-available/nestjs-https.template.conf
     fi
 fi
 

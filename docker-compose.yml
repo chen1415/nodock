@@ -11,7 +11,9 @@ services:
                 - YARN=${WORKSPACE_INSTALL_YARN}
         volumes:
             - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
-        entrypoint: run-nodock "node dist/main"
+        entrypoint: 
+            - node 
+            - ${NESTJS_PROJECT_RUNNING_FILEPATH}
         tty: true
     mysql:
         build:

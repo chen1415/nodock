@@ -27,7 +27,7 @@ RUN n "$NODE_VERSION"
 
 RUN if [ ${YARN} = true ]; then \
     npm install -g yarn \
-;fi
+    ;fi
 
 COPY scripts/run-nodock.sh /usr/bin/run-nodock
 COPY package*.json ./
@@ -35,5 +35,3 @@ COPY package*.json ./
 RUN chmod 700 /usr/bin/run-nodock
 
 WORKDIR /opt/app/$PROJECT_PATH
-
-# ENTRYPOINT ["node", "dist/main"]
