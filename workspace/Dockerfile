@@ -26,14 +26,15 @@ RUN n "$NODE_VERSION"
 
 # Install YARN
 RUN npm i -g yarn
+RUN yarn global add @nestjs/cli
 
 ##
 ## Cron
 ##
 
 COPY ./crontab /var/spool/cron/crontabs
+COPY package*.json ./
 
 WORKDIR /opt/app
-
 
 ENTRYPOINT sleep infinity

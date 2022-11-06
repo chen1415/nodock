@@ -103,10 +103,12 @@ services:
             args:
                 - NODE_VERSION=${NODE_VERSION}
                 - TZ=${WORKSPACE_TIMEZONE}
-        links:
-            - nginx
+        # links:
+        #     - nginx
         volumes:
             - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+        ports:
+            - "${NESTJS_PROJECT_lISTEN_PORT}:${NESTJS_PROJECT_lISTEN_PORT}"
     memcached:
         build:
             context: ./memcached
