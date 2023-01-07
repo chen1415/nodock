@@ -18,6 +18,4 @@ ENV WEB_SSL=$WEB_SSL
 ENV SELF_SIGNED=$SELF_SIGNED
 ENV NO_DEFAULT=$NO_DEFAULT
 
-RUN /bin/bash /root/scripts/build-nginx.sh
-
 CMD nginx
