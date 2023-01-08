@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-    nestjs:
+    p1-nestjs:
         build:
             context: ./node
             args:
@@ -15,7 +15,7 @@ services:
             - node 
             - ${P1_NESTJS_PROJECT_RUNNING_FILEPATH}
         tty: true
-    mycv:
+    p2-mycv:
         build:
             context: ./node
             args:
@@ -45,8 +45,8 @@ services:
             - "${NGINX_HOST_HTTPS_PORT}:443"
         tty: true
         links:
-            - nestjs
-            - mycv
+            - p1-nestjs
+            - p2-mycv
     mysql:
         build:
             context: ./mysql
