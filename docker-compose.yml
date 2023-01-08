@@ -1,33 +1,33 @@
 version: '3.3'
 
 services:
-    p1-nestjs:
+    p1-n-demo:
         build:
             context: ./node
             args:
-                - NODE_ENV=${P1_NESTJS_NODE_ENV}
-                - PROJECT_PATH=${P1_NESTJS_PROJECT_PATH}
+                - NODE_ENV=${P1_N_DEMO_NODE_ENV}
+                - PROJECT_PATH=${P1_N_DEMO_PROJECT_PATH}
                 - YARN=${WORKSPACE_INSTALL_YARN}
                 - NODE_VERSION=${NEST_NODE_VERSION}
         volumes:
             - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
         entrypoint: 
             - node 
-            - ${P1_NESTJS_PROJECT_RUNNING_FILEPATH}
+            - ${P1_N_DEMO_PROJECT_RUNNING_FILEPATH}
         tty: true
-    p2-mycv:
+    p2-n-mycv:
         build:
             context: ./node
             args:
-                - NODE_ENV=${P2_MYCV_NODE_ENV}
-                - PROJECT_PATH=${P2_MYCV_PROJECT_PATH}
+                - NODE_ENV=${P2_N_MYCV_NODE_ENV}
+                - PROJECT_PATH=${P2_N_MYCV_PROJECT_PATH}
                 - YARN=${WORKSPACE_INSTALL_YARN}
                 - NODE_VERSION=${NEST_NODE_VERSION}
         volumes:
             - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
         entrypoint: 
             - node 
-            - ${P2_MYCV_PROJECT_RUNNING_FILEPATH}
+            - ${P2_N_MYCV_PROJECT_RUNNING_FILEPATH}
         tty: true
     nginx:
         build:
@@ -45,8 +45,8 @@ services:
             - "${NGINX_HOST_HTTPS_PORT}:443"
         tty: true
         links:
-            - p1-nestjs
-            - p2-mycv
+            - p1-n-demo
+            - p2-n-mycv
     mysql:
         build:
             context: ./mysql
