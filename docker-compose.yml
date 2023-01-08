@@ -41,7 +41,6 @@ services:
         build:
             context: ./nginx
             args:
-                - WEB_REVERSE_PROXY_PORT=8000
                 - WEB_SSL=false
                 - SELF_SIGNED=false
                 - NO_DEFAULT=false
@@ -82,12 +81,12 @@ services:
                 - YARN=${WORKSPACE_INSTALL_YARN}
                 - NEST=${WORKSPACE_INSTALL_NEST}
                 - NEST_VERSION=${WORKSPACE_NEST_VERSION}
-        # links:
-        #     - nginx
         volumes:
             - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
         ports:
-            - "${NESTJS_PROJECT_lISTEN_PORT}:${NESTJS_PROJECT_lISTEN_PORT}"
+            - "${PROJECT_ONE_LISTEN_PORTS_ON_WORKSPACE}:${PROJECT_ONE_LISTEN_PORTS_ON_WORKSPACE}"
+            - "${PROJECT_TWO_LISTEN_PORTS_ON_WORKSPACE}:${PROJECT_TWO_LISTEN_PORTS_ON_WORKSPACE}"
+            - "${PROJECT_THREE_LISTEN_PORTS_ON_WORKSPACE}:${PROJECT_THREE_LISTEN_PORTS_ON_WORKSPACE}"
     redis:
         build:
             context: ./redis
